@@ -16,21 +16,21 @@ class VideoPolicy
 
     public function view(User $user)
     {
-        return $user->hasPermissionTo('view videos');
+        return $user ? true : false;
     }
 
     public function create(User $user)
     {
-        return $user->hasPermissionTo('create videos');
+        return $user->hasRole('admin') || $user->hasRole('teacher');
     }
 
     public function update(User $user, $video)
     {
-        return $user->hasPermissionTo('edit videos') && ($user->hasRole('admin') || $video->author_id == $user->id);
+        return $user->hasRole('admin') || ($user->hasRole('teacher') && $video->author_id == $user->id);
     }
 
     public function delete(User $user, $video)
     {
-        return $user->hasPermissionTo('delete videos') && ($user->hasRole('admin') || $video->author_id == $user->id);
+        return $user->hasRole('admin') || ($user->hasRole('teacher') && $video->author_id == $user->id);
     }
 }
