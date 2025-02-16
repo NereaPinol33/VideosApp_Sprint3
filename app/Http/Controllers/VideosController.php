@@ -23,10 +23,10 @@ class VideosController extends Controller
     /**
      * Return the class of the test that tests this controller.
      *
-     * @return \Tests\Unit\VideoTest
+     * @return \Tests\Unit\VideosDateTest
      */
     public function testedBy()
     {
-        return \Tests\Unit\VideosTest::class;
+        return new \Tests\Unit\VideosDateTest('test_can_get_formatted_published_at_date');
     }
 }
