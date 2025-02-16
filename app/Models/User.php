@@ -70,17 +70,6 @@ class User extends Authenticatable
     }
 
     /**
-     * Assign a single role to the user (removes existing roles first).
-     *
-     * @param string $roleName
-     * @return void
-     */
-    public function setRole(string $roleName)
-    {
-        $this->syncRoles([$roleName]);
-    }
-
-    /**
      * Get the user's single role.
      *
      * @return string|null
@@ -89,6 +78,4 @@ class User extends Authenticatable
     {
         return $this->roles->first()->name ?? null;
     }
-
-    public function testedBy
 }

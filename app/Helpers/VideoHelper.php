@@ -2,23 +2,28 @@
 
 use App\Models\Video;
 
-if (! function_exists('create_default_teacher_video')) {
+if (! function_exists('create_video')) {
     /**
-     * Create a default teacher video if it doesn't exist.
+     * Create a video if it doesn't exist.
      *
+     * @param string $title
+     * @param string $description
+     * @param string $url
+     * @param int $author_id
      * @return void
      */
-    function create_default_teacher_video()
+    function create_video($title, $description, $url, $author_id)
     {
-        if (Video::where('title', env('DEFAULT_TEACHER_VIDEO_TITLE'))->exists()) {
+        if (Video::where('title', $title)->exists()) {
             return;
         }
 
         $video = new Video;
-        $video->title = env('DEFAULT_TEACHER_VIDEO_TITLE');
-        $video->description = env('DEFAULT_TEACHER_VIDEO_DESCRIPTION');
-        $video->url = env('DEFAULT_TEACHER_VIDEO_URL');
+        $video->title = $title;
+        $video->description = $description;
+        $video->url = $url;
         $video->published_at = now();
+        $video->author_id = $author_id;
         $video->save();
     }
 }

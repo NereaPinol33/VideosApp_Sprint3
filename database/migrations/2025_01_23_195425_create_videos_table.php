@@ -20,6 +20,7 @@ return new class extends Migration
             $table->unsignedBigInteger('previous')->nullable();
             $table->unsignedBigInteger('next')->nullable();
             $table->unsignedBigInteger('series_id')->nullable();
+            $table->unsignedBigInteger('author_id');
             $table->timestamps();
         });
     }

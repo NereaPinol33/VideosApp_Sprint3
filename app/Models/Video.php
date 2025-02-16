@@ -23,6 +23,7 @@ class Video extends Model
         'previous',
         'next',
         'series_id',
+        'author_id',
     ];
 
     /**
