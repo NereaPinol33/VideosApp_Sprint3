@@ -2,6 +2,7 @@
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Illuminate\Support\Facades\Gate;
+use App\Policies\VideoPolicy;
 
 if (!function_exists('create_roles')) {
     /**
@@ -27,21 +28,10 @@ if (!function_exists('define_gates')) {
      */
     function define_gates()
     {
-        Gate::define('view-video', function ($user) {
-            return $user->hasPermissionTo('view videos');
-        });
-
-        Gate::define('create-videos', function ($user) {
-            return $user->hasPermissionTo('create videos');
-        });
-
-        Gate::define('edit-videos', function ($user, $video) {
-            return $user->hasPermissionTo('edit videos') && ($user->hasRole('admin') || $video->author_id == $user->id);
-        });
-
-        Gate::define('delete-videos', function ($user, $video) {
-            return $user->hasPermissionTo('delete videos') && ($user->hasRole('admin') || $video->author_id == $user->id);
-        });
+        Gate::define('view-video', [VideoPolicy::class, 'view']);
+        Gate::define('create-videos', [VideoPolicy::class, 'create']);
+        Gate::define('edit-videos', [VideoPolicy::class, 'update']);
+        Gate::define('delete-videos', [VideoPolicy::class, 'delete']);
     }
 }
 
