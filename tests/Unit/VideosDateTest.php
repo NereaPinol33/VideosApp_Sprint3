@@ -7,7 +7,7 @@ use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
-class VideoDatesTest extends TestCase
+class VideosDateTest extends TestCase
 {
     use RefreshDatabase;
 
