@@ -2,7 +2,6 @@
 
 namespace Tests\Unit;
 
-use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -15,7 +14,7 @@ class HelpersTest extends TestCase
         create_roles();
         create_user('Test User', 'test@example.com', 'secret', 'teacher');
         $this->assertDatabaseHas('users', [
-            'email' => 'test@example.com'
+            'email' => 'test@example.com',
         ]);
     }
 
@@ -26,7 +25,7 @@ class HelpersTest extends TestCase
         $author = \App\Models\User::where('email', 'videoauthor@example.com')->first();
         create_video('Test Video', 'Test Description', 'http://example.com/video', $author->id);
         $this->assertDatabaseHas('videos', [
-            'title' => 'Test Video'
+            'title' => 'Test Video',
         ]);
     }
 

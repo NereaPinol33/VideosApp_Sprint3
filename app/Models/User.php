@@ -16,10 +16,10 @@ class User extends Authenticatable
     use HasApiTokens;
     use HasFactory;
     use HasProfilePhoto;
+    use HasRoles;
     use HasTeams;
     use Notifiable;
     use TwoFactorAuthenticatable;
-    use HasRoles;
 
     /**
      * The attributes that are mass assignable.
@@ -63,7 +63,6 @@ class User extends Authenticatable
     /**
      * Return the class of the test that tests this model.
      */
-
     public function testedBy()
     {
         return \Tests\Unit\HelpersTest::class;

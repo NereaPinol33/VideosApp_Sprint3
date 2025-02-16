@@ -2,9 +2,6 @@
 
 namespace Tests\Feature\Videos;
 
-use App\Models\User;
-use App\Models\Video;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 class VideosManageControllerTest extends TestCase
@@ -68,6 +65,7 @@ class VideosManageControllerTest extends TestCase
         create_user('Administrator', 'superadmin@example.com', 'secret', 'admin');
         $superAdmin = \App\Models\User::where('email', 'superadmin@example.com')->first();
         $this->actingAs($superAdmin);
+
         return $superAdmin;
     }
 
@@ -76,6 +74,7 @@ class VideosManageControllerTest extends TestCase
         create_user('Teacher', 'teacher@example.com', 'secret', 'teacher');
         $teacher = \App\Models\User::where('email', 'teacher@example.com')->first();
         $this->actingAs($teacher);
+
         return $teacher;
     }
 
@@ -84,6 +83,7 @@ class VideosManageControllerTest extends TestCase
         create_user('Student', 'student@example.com', 'secret', 'user');
         $studentUser = \App\Models\User::where('email', 'student@example.com')->first();
         $this->actingAs($studentUser);
+
         return $studentUser;
     }
 }

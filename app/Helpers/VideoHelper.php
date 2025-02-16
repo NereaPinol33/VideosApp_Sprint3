@@ -6,10 +6,10 @@ if (! function_exists('create_video')) {
     /**
      * Create a video if it doesn't exist.
      *
-     * @param string $title
-     * @param string $description
-     * @param string $url
-     * @param int $author_id
+     * @param  string  $title
+     * @param  string  $description
+     * @param  string  $url
+     * @param  int  $author_id
      * @return void
      */
     function create_video($title, $description, $url, $author_id)

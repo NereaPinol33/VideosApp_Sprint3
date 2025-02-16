@@ -61,17 +61,15 @@ if (! function_exists('create_default_user_student_team')) {
     }
 }
 
-
-if (! function_exists('create_user'))
-{
+if (! function_exists('create_user')) {
     /**
      * Create a user, with team if needed.
      *
-     * @param string $name
-     * @param string $email
-     * @param string $password
-     * @param string $role
-     * @param bool $team
+     * @param  string  $name
+     * @param  string  $email
+     * @param  string  $password
+     * @param  string  $role
+     * @param  bool  $team
      * @return void
      */
     function create_user($name, $email, $password, $role, $team = false, $teamName = null)
@@ -86,18 +84,18 @@ if (! function_exists('create_user'))
         $user->password = bcrypt($password);
         $user->save();
 
-        if ($team) add_personal_team($user, $teamName);
-        
+        if ($team) {
+            add_personal_team($user, $teamName);
+        }
+
         $user->syncRoles($role);
     }
 }
 
-if (! function_exists('add_personal_team'))
-{
+if (! function_exists('add_personal_team')) {
     /**
      * Add a personal team to a user.
      *
-     * @param User $user
      * @return void
      */
     function add_personal_team(User $user, $name = null)

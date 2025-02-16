@@ -1,10 +1,11 @@
 <?php
-use Spatie\Permission\Models\Role;
-use Spatie\Permission\Models\Permission;
-use Illuminate\Support\Facades\Gate;
-use App\Policies\VideoPolicy;
 
-if (!function_exists('create_roles')) {
+use App\Policies\VideoPolicy;
+use Illuminate\Support\Facades\Gate;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
+
+if (! function_exists('create_roles')) {
     /**
      * Create the default roles if they don't exist.
      *
@@ -20,7 +21,7 @@ if (!function_exists('create_roles')) {
     }
 }
 
-if (!function_exists('define_gates')) {
+if (! function_exists('define_gates')) {
     /**
      * Define the gates.
      *
@@ -35,7 +36,7 @@ if (!function_exists('define_gates')) {
     }
 }
 
-if (!function_exists('define_permissions')) {
+if (! function_exists('define_permissions')) {
     /**
      * Define the permissions.
      *
@@ -56,6 +57,6 @@ if (!function_exists('define_permissions')) {
         $role->syncPermissions(['view videos', 'create videos']);
 
         $role = Role::findByName('student');
-        $role->syncPermissions(['view videos']);        
+        $role->syncPermissions(['view videos']);
     }
 }
