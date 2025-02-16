@@ -18,6 +18,7 @@ class VideoFactory extends Factory
             'published_at' => $this->faker->optional()->dateTime,
             'previous' => null,
             'next' => null,
+            'author_id' => 1,
             'series_id' => null,
         ];
     }

@@ -33,6 +33,7 @@ class VideosTest extends TestCase
             'description' => 'Video description',
             'url' => 'https://www.youtube.com/watch?v=video-id',
             'published_at' => now(),
+            'author_id' => $user->id,
         ]);
 
         $response = $this->get(route('videos.show', ['id' => $video->id]));

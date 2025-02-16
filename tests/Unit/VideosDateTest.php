@@ -7,7 +7,7 @@ use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
-class VideosTest extends TestCase
+class VideoDatesTest extends TestCase
 {
     use RefreshDatabase;
 
@@ -15,6 +15,7 @@ class VideosTest extends TestCase
     {
         $video = Video::factory()->create([
             'published_at' => Carbon::create(2023, 10, 1, 12),
+            'author_id' => 1,
         ]);
 
         $formattedDate = $video->formatted_published_at;
@@ -26,6 +27,7 @@ class VideosTest extends TestCase
     {
         $video = Video::factory()->create([
             'published_at' => null,
+            'author_id' => 1,
         ]);
 
         $formattedDate = $video->formatted_published_at;
